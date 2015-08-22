@@ -1,0 +1,65 @@
+/*
+Error: Undefined variable: "$fontSize-smaller".
+        on line 46 of D:\java_android\source\html5learn\canvas\EaselJS-0.8.1\build\createjsTheme\assets\scss\elements\anchors.scss
+
+41: 		min-width: 12rem;
+42: 		padding: 0 1rem;
+43: 		margin: 1rem;
+44: 		// Type
+45: 		text-align: center;
+46: 		font-size: $fontSize-smaller;
+47: 		line-height: 4.2rem;
+48: 	//	DISPLAY
+49: 		// Visual Enhancement
+50: 		background-color: $color_gray-dark;
+51: 		color: $color_gray-lightest;
+
+Backtrace:
+D:\java_android\source\html5learn\canvas\EaselJS-0.8.1\build\createjsTheme\assets\scss\elements\anchors.scss:46
+C:/Users/Administrator/Downloads/Koala/rubygems/gems/sass-3.4.9/lib/sass/script/tree/variable.rb:49:in `_perform'
+C:/Users/Administrator/Downloads/Koala/rubygems/gems/sass-3.4.9/lib/sass/script/tree/node.rb:50:in `perform'
+C:/Users/Administrator/Downloads/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:384:in `visit_prop'
+C:/Users/Administrator/Downloads/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Users/Administrator/Downloads/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+C:/Users/Administrator/Downloads/Koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `block in with_base'
+C:/Users/Administrator/Downloads/Koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:115:in `with_frame'
+C:/Users/Administrator/Downloads/Koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `with_base'
+C:/Users/Administrator/Downloads/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `visit'
+C:/Users/Administrator/Downloads/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:420:in `block (2 levels) in visit_rule'
+C:/Users/Administrator/Downloads/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:420:in `map'
+C:/Users/Administrator/Downloads/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:420:in `block in visit_rule'
+C:/Users/Administrator/Downloads/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+C:/Users/Administrator/Downloads/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:418:in `visit_rule'
+C:/Users/Administrator/Downloads/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Users/Administrator/Downloads/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+C:/Users/Administrator/Downloads/Koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `block in with_base'
+C:/Users/Administrator/Downloads/Koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:115:in `with_frame'
+C:/Users/Administrator/Downloads/Koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `with_base'
+C:/Users/Administrator/Downloads/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `visit'
+C:/Users/Administrator/Downloads/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+C:/Users/Administrator/Downloads/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:52:in `map'
+C:/Users/Administrator/Downloads/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+C:/Users/Administrator/Downloads/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
+C:/Users/Administrator/Downloads/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+C:/Users/Administrator/Downloads/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
+C:/Users/Administrator/Downloads/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+C:/Users/Administrator/Downloads/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
+C:/Users/Administrator/Downloads/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Users/Administrator/Downloads/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:157:in `visit'
+C:/Users/Administrator/Downloads/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:8:in `visit'
+C:/Users/Administrator/Downloads/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/root_node.rb:36:in `css_tree'
+C:/Users/Administrator/Downloads/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+C:/Users/Administrator/Downloads/Koala/rubygems/gems/sass-3.4.9/lib/sass/engine.rb:368:in `_render_with_sourcemap'
+C:/Users/Administrator/Downloads/Koala/rubygems/gems/sass-3.4.9/lib/sass/engine.rb:285:in `render_with_sourcemap'
+C:/Users/Administrator/Downloads/Koala/rubygems/gems/sass-3.4.9/lib/sass/exec/sass_scss.rb:396:in `run'
+C:/Users/Administrator/Downloads/Koala/rubygems/gems/sass-3.4.9/lib/sass/exec/sass_scss.rb:62:in `process_result'
+C:/Users/Administrator/Downloads/Koala/rubygems/gems/sass-3.4.9/lib/sass/exec/base.rb:52:in `parse'
+C:/Users/Administrator/Downloads/Koala/rubygems/gems/sass-3.4.9/lib/sass/exec/base.rb:19:in `parse!'
+C:/Users/Administrator/Downloads/Koala/rubygems/gems/sass-3.4.9/bin/sass:13:in `<top (required)>'
+C:/Users/Administrator/Downloads/Koala/bin/sass:18:in `load'
+C:/Users/Administrator/Downloads/Koala/bin/sass:18:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Undefined variable: \"$fontSize-smaller\".\A         on line 46 of D:\java_android\source\html5learn\canvas\EaselJS-0.8.1\build\createjsTheme\assets\scss\elements\anchors.scss\A \A 41: 		min-width: 12rem;\A 42: 		padding: 0 1rem;\A 43: 		margin: 1rem;\A 44: 		// Type\A 45: 		text-align: center;\A 46: 		font-size: $fontSize-smaller;\A 47: 		line-height: 4.2rem;\A 48: 	//	DISPLAY\A 49: 		// Visual Enhancement\A 50: 		background-color: $color_gray-dark;\A 51: 		color: $color_gray-lightest;"; }

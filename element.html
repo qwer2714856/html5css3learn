@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h2>新增的结构元素</h2>
+<ul>
+    <li>selection</li>
+    <li>article</li>
+    <li>aside</li>
+    <li>header</li>
+    <li>hgroup</li>
+    <li>footer</li>
+    <li>nav</li>
+    <li>figure</li>
+</ul>
+<h2>新增的其他元素</h2>
+<ul>
+    <li>video</li>
+    <li>radio</li>
+    <li>embed</li>
+    <li>mark</li>
+    <li>progress</li>
+    <li>meter</li>
+    <li>time</li>
+    <li>ruby</li>
+    <li>rt</li>
+    <li>rp</li>
+    <li>wbr</li>
+    <li>canvas</li>
+    <li>command</li>
+    <li>details</li>
+    <li>datalist</li>
+    <li>datagrid</li>
+    <li>keygen</li>
+    <li>output</li>
+    <li>source</li>
+    <li>menu</li>
+</ul>
+<h2>新增的input元素的类型</h2>
+<ul>
+    <li>email</li>
+    <li>url</li>
+    <li>number</li>
+    <li>range</li>
+    <li>Date Pickers</li>
+</ul>
+
+
+
+<h2>新增和废除 属性</h2>
+<h3>废除的属性</h3>
+<table cellspacing="0" cellpadding="0" border="1"><tbody>     <tr>        <td valign="top" width="187">         <p><b>在HTML 4中使用的属性</b></p>       </td>        <td valign="top" width="142">         <p><b>使用该属性的元素</b></p>       </td>        <td valign="top" width="285">         <p><b>在HTML 5中的替代方案</b></p>       </td>     </tr>      <tr>       <td valign="top" width="187">         <p><b>rev</b></p>       </td>        <td valign="top" width="142">         <p>link、a</p>       </td>        <td valign="top" width="285">         <p>rel</p>       </td>     </tr>      <tr>       <td valign="top" width="187">         <p><b>charset</b></p>       </td>        <td valign="top" width="142">         <p>link、a</p>       </td>        <td valign="top" width="285">         <p>在被链接的资源的中使用HTTP Content-type头元素</p>       </td>     </tr>      <tr>       <td valign="top" width="187">         <p><b>shape</b><b>、coords</b></p>       </td>        <td valign="top" width="142">         <p>a</p>       </td>        <td valign="top" width="285">         <p>使用area元素代替a元素</p>       </td>     </tr>      <tr>       <td valign="top" width="187">         <p><b>longdesc</b></p>       </td>        <td valign="top" width="142">         <p>img、iframe</p>       </td>        <td valign="top" width="285">         <p>使用a元素链接到校长描述</p>       </td>     </tr>      <tr>       <td valign="top" width="187">         <p><b>target</b></p>       </td>        <td valign="top" width="142">         <p>link</p>       </td>        <td valign="top" width="285">         <p>多余属性，被省略</p>       </td>     </tr>      <tr>       <td valign="top">         <p><b>nohref</b></p>       </td>        <td valign="top">         <p>area</p>       </td>        <td valign="top">         <p>多余属性，被省略</p>       </td>     </tr>      <tr>       <td valign="top">         <p><b>profile</b></p>       </td>        <td valign="top">         <p>head</p>       </td>        <td valign="top">         <p>多余属性，被省略</p>       </td>     </tr>      <tr>       <td valign="top">         <p><b>version</b></p>       </td>        <td valign="top">         <p>html</p>       </td>        <td valign="top">         <p>多余属性，被省略</p>       </td>     </tr>      <tr>       <td valign="top">         <p><b>name</b></p>       </td>        <td valign="top">         <p>img</p>       </td>        <td valign="top">         <p>id</p>       </td>     </tr>      <tr>       <td valign="top">         <p><b>scheme</b></p>       </td>        <td valign="top">         <p>meta</p>       </td>        <td valign="top">         <p>只为某个表单域使用scheme</p>       </td>     </tr>      <tr>       <td valign="top">         <p><b>archive</b><b>、chlassid、codebose、codetype、declare、standby</b></p>       </td>        <td valign="top">         <p>object</p>       </td>        <td valign="top">         <p>使用data与typc属性类调用插件。需要使用这些属性来设置参数时，使用param属性</p>       </td>     </tr>      <tr>       <td valign="top">         <p><b>valuetype</b><b>、type</b></p>       </td>        <td valign="top">         <p>param</p>       </td>        <td valign="top">         <p>使用name与value属性，不声明之的MIME类型</p>       </td>     </tr>      <tr>       <td valign="top">         <p><b>axis</b><b>、abbr</b></p>       </td>        <td valign="top">         <p>td、th</p>       </td>        <td valign="top">         <p>使用以明确简洁的文字开头、后跟详述文字的形式。可以对更详细内容使用title属性，来使单元格的内容变得简短</p>       </td>     </tr>      <tr>       <td valign="top">         <p><b>scope</b></p>       </td>        <td valign="top">         <p>td</p>       </td>        <td valign="top">         <p>在被链接的资源的中使用HTTP Content-type头元素</p>       </td>     </tr>      <tr>       <td valign="top">         <p><b>align</b></p>       </td>        <td valign="top">         <p>caption、input、legend、div、h1、h2、h3、h4、h5、h6、p</p>       </td>        <td valign="top">         <p>使用CSS样式表替代</p>       </td>     </tr>      <tr>       <td valign="top">         <p><b>alink</b><b>、link、text、vlink、background、bgcolor</b></p>       </td>        <td valign="top">         <p>body</p>       </td>        <td valign="top">         <p>使用CSS样式表替代</p>       </td>     </tr>      <tr>       <td valign="top">         <p><b>align</b><b>、bgcolor、border、cellpadding、cellspacing、frame、rules、width</b></p>       </td>        <td valign="top">         <p>table</p>       </td>        <td valign="top">         <p>使用CSS样式表替代</p>       </td>     </tr>      <tr>       <td valign="top">         <p><b>align</b><b>、char、charoff、height、nowrap、valign</b></p>       </td>        <td valign="top">         <p>tbody、thead、tfoot</p>       </td>        <td valign="top">         <p>使用CSS样式表替代</p>       </td>     </tr>      <tr>       <td valign="top">         <p><b>align</b><b>、bgcolor、char、charoff、height、nowrap、valign、width</b></p>       </td>        <td valign="top">         <p>td、th</p>       </td>        <td valign="top">         <p>使用CSS样式表替代</p>       </td>     </tr>      <tr>       <td valign="top">         <p><b>align</b><b>、bgcolor、char、charoff、valign</b></p>       </td>        <td valign="top">         <p>tr</p>       </td>        <td valign="top">         <p>使用CSS样式表替代</p>       </td>     </tr>      <tr>       <td valign="top">         <p><b>align</b><b>、char、charoff、valign、width</b></p>       </td>        <td valign="top">         <p>col、colgroup</p>       </td>        <td valign="top">         <p>使用CSS样式表替代</p>       </td>     </tr>      <tr>       <td valign="top">         <p><b>align</b><b>、border、hspace、vspace</b></p>       </td>        <td valign="top">         <p>object</p>       </td>        <td valign="top">         <p>使用CSS样式表替代</p>       </td>     </tr>      <tr>       <td valign="top">         <p><b>clear</b></p>       </td>        <td valign="top">         <p>br</p>       </td>        <td valign="top">         <p>使用CSS样式表替代</p>       </td>     </tr>      <tr>       <td valign="top">         <p><b>compace</b><b>、type</b></p>       </td>        <td valign="top">         <p>ol、ul、li</p>       </td>        <td valign="top">         <p>使用CSS样式表替代</p>       </td>     </tr>      <tr>       <td valign="top">         <p><b>compace</b></p>       </td>        <td valign="top">         <p>dl</p>       </td>        <td valign="top">         <p>使用CSS样式表替代</p>       </td>     </tr>      <tr>       <td valign="top">         <p><b>compace</b></p>       </td>        <td valign="top">         <p>menu</p>       </td>        <td valign="top">         <p>使用CSS样式表替代</p>       </td>     </tr>      <tr>       <td valign="top">         <p><b>width</b></p>       </td>        <td valign="top">         <p>pre</p>       </td>        <td valign="top">         <p>使用CSS样式表替代</p>       </td>     </tr>      <tr>       <td valign="top">         <p><b>align</b><b>、hspace、vspace</b></p>       </td>        <td valign="top">         <p>img</p>       </td>        <td valign="top">         <p>使用CSS样式表替代</p>       </td>     </tr>      <tr>       <td valign="top">         <p><b>align</b><b>、noshade、size、width</b></p>       </td>        <td valign="top">         <p>hr</p>       </td>        <td valign="top">         <p>使用CSS样式表替代</p>       </td>     </tr>      <tr>       <td valign="top">         <p><b>align</b><b>、frameborder、scrolling、marginheight、marginwidth</b></p>       </td>        <td valign="top">         <p>iframe</p>       </td>        <td valign="top">         <p>使用CSS样式表替代</p>       </td>     </tr>      <tr>       <td valign="top">         <p><b>autosubmit</b></p>       </td>        <td valign="top">         <p>menu</p>       </td>        <td valign="top">&nbsp;</td>     </tr>   </tbody></table>
+
+<h3>全局属性</h3>
+<p>任何元素都有的属性</p>
+<ul>
+    <li>contentEditable 表示该元素内容可以被编辑，例如<span contenteditable="true">123</span> 默认继承父辈,没有就是true</li>
+    <li>hidden 元素值为true可见，false不可见</li>
+    <li>spellcheck 针对文本输入框input textarea 语法检查 ture or false</li>
+    <li>tabindex TAB 页面的元素获得焦点第几个访问到的, 如果tabindex设置为-1是无法用tab获取的，这样就给程序提供了便利，可以获取所有有tabindex的</li>
+</ul>
+<span contenteditable="" tabindex="2">123</span>
+<input type="text"/>
+<input type="text" spellcheck="true" tabindex="1"/>
+
+
+
+<h2>主体元素</h2>
+<h3>article</h3>
+<article>
+    <header>
+        <h1>head</h1>
+        <p>head</p>
+    </header>
+    <object data="" type="">
+        <embed src="#" type=""/>
+    </object>
+    <footer>
+        footer
+    </footer>
+</article>
+
+
+<h3>section 对页面分块有标题的时候用这个区分article这个是独立的或表示插件</h3>
+<section>
+    <h1>tith</h1>
+    <p>hi</p>
+</section>
+
+
+<h3>nav 导航 </h3>
+<ul>
+    <li>传统导航</li>
+    <li>侧边栏</li>
+    <li>页内导航</li>
+    <li>翻页操作</li>
+</ul>
+<nav>
+    <ul>
+        <li><a href="">111</a></li>
+        <li><a href="">111</a></li>
+        <li><a href="">111</a></li>
+        <li><a href="">111</a></li>
+    </ul>
+</nav>
+<h3>menu 是应用在交互方面的应用程序多一些</h3>
+
+<h3>aside</h3>
+<article>
+    <aside>对article内容的一个说明</aside>
+</article>
+<aside>网站附属信息或广告单元</aside>
+
+
+<h3>time 与 pubdate</h3>
+<time datetime="2015-05-05">2015-05-05</time><!--datetime给机器读取用的-->
+<time datetime="2015-05-05T09:01">2015-05-05</time><!--T 代表日期和时间的分割符-->
+<time datetime="2015-05-05T09:01Z">2015-05-05</time><!--T 代表日期和时间的分割符 Z UTC 标准时间-->
+<time datetime="2015-05-05T09:01+09:00Z">2015-05-05</time><!--T 代表日期和时间的分割符 Z UTC 标准时间 +表示的一个时差-->
+<time datetime="2015-05-05T09:01+09:00Z" pubdate>2015-05-05</time><!--T 代表日期和时间的分割符 Z UTC 标准时间 +表示的一个时差 pubdate一是用于指定元素的日期时间，二是附加功用，用于指定这个时间是文档的发布时间-->
+
+
+<h3>header</h3>
+<header>可以出现多次header</header>
+
+
+<h3>footer</h3>
+<footer>底部可以出现多次</footer>
+
+
+<h3>hgroup</h3>
+<section>
+    <hgroup><!--第二个是第一个子标题且并排就可以用-->
+        <h1>a</h1>
+        <h2>a1</h2>
+    </hgroup>
+</section>
+
+<h3>address</h3>
+<address><!--承载地址-->
+    <div>
+        <a href="">aa</a>
+    </div>
+</address>
+</body>
+</html>

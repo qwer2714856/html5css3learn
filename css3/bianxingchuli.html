@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<style>
+    .transform{
+        width: 300px;
+        height: 300px;
+        background: #000;
+        margin: 0 auto;
+        /*这几个值要分开使用*/
+        /*transform:translate(1500px,150px);*//*移动*//*
+        transform:scale(0.5);*//*缩放*//*
+        transform:rotate(30deg);*//*旋转*//*
+        transform:skew(30deg,30deg);*//*x y 倾斜*//*
+        transform.origin:left top;指定变形的点
+        */
+        /*添加多个变形*/
+        transform-origin:right top;
+        transform:translate(1500px,150px)  scale(0.5) rotate(30deg) skew(30deg,30deg);/*顺序执行从左至右顺序不同效果不同*/
+        color: #fff;
+
+
+    }
+</style>
+<h1>transform</h1>
+<div class="transform">实例</div>
+
+
+
+</body>
+</html>

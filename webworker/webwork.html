@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>web worker</title>
+</head>
+<body>
+<ul>
+    <li>web worker 是运行在后台的javascript 相当于多线程,独立于主脚本本件,不会影响页面效率</li>
+    <li>方法postMessage()线程想主线程回传信息,terminate()终止web worker 并释放浏览器/计算机资源</li>
+    <li>onmessage</li>
+</ul>
+<div id="numberDiv" style="background: red">0</div>
+
+<script>
+var numberDiv = document.getElementById("numberDiv");
+//创建子线程
+var worker = new Worker("work.js");
+worker.postMessage(3);//向子线程传值
+worker.onmessage = function(wk){
+    numberDiv.innerHTML = wk.data;//获取子线程的值
+}
+numberDiv.onclick = function(){
+    worker.terminate();
+    worker = null;
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h1>createjs</h1>
+<p>http://createjs.com/ canvas库</p>
+<ul>
+    <li>Easel   主要处理html5 canvas</li>
+    <li>Tween   主要处理html5 动画调整和JS属性的</li>
+    <li>SOUND   主要处理html5 音频相关</li>
+    <li>PRELOAD 主要处理html5 程序的协调和加载项的类库</li>
+</ul>
+<script src="EaselJS-0.8.1/lib/easeljs-0.8.1.min.js"></script>
+<canvas id="canvas" width="500" height="500"></canvas>
+<script>
+//var canvas = document.getElementById("cavas");
+//使用这个需要一个舞台stage
+/*var canvas = document.getElementById("canvas");
+var stage = new createjs.Stage(canvas);//舞台
+
+var num = 0;
+var text = new createjs.Text("Hello World", "20px Arial", "#ff7700");
+text.x = 100;
+text.textBaseline = "top";
+stage.addChild(text);//添加到舞台
+stage.update();//舞台更新
+
+createjs.Ticker.setFPS(3);
+createjs.Ticker.addEventListener("tick", handleTick);
+function handleTick(event) {
+    // Actions carried out each tick (aka frame)
+    if (!event.paused) {
+        // Actions carried out when the Ticker is not paused.
+        num ++;
+        text.text = num;
+        stage.update();
+    }
+}*/
+
+</script>
+
+
+<canvas id="canvas2" width="2000" height="1000" style="background: #000"></canvas>
+<script>
+    window.onload = function() {
+        var canvas2 = document.getElementById("canvas2");
+        var stage = new createjs.Stage(canvas2);
+
+        var img = new Image();
+        var data = {
+            images: ['../a.jpg'],
+            frames: {width: 20, height: 20, regX: 10, regY: 10}
+        };
+        var sprite = new createjs.Sprite(new createjs.SpriteSheet(data));
+        createjs.Ticker.setFPS(20);
+        createjs.Ticker.addEventListener("tick", function () {
+            var t = stage.getNumChildren();
+            for(var i=t-1; i>=0; i--){
+                var s = stage.getChildAt(i);
+                s.vY += 1;
+                s.vX += 1;
+                s.x += s.vX;
+                s.y += s.vY;
+
+                s.scaleX = s.scaleY = s.scaleX + s.vS;
+                s.alpha += s.vA;
+
+
+                if(s.alpha <= 0 || s.y >= canvas2.height){
+
+                    stage.removeChild(i);
+                }
+
+            }
+            stage.update();
+        });
+
+
+        stage.addEventListener("stagemouseup", function (e) {
+            addS(Math.random()*2+40, stage.mouseX, stage.mouseY, 2);
+        });
+        stage.addEventListener("stagemousemove", function () {
+            addS(Math.random()*2+1, stage.mouseX, stage.mouseY, 1);
+        });
+
+
+        function addS(count, x, y, speed){
+            for(var i = 0; i < count; i++){
+                //clone sprite对象
+                var s = sprite.clone();
+                s.x = x;
+                s.y = y;
+                s.alpha = Math.random() * 0.5 + 0.5;
+                s.scaleX = s.scaleY =  Math.random() + 0.1;
+
+                var qx = Math.PI * 2 * Math.random();
+                var v = (Math.random() - 0.6) * 30 * speed;
+
+                s.vX = Math.sin(qx) * v;
+                s.vY = Math.cos(qx) * v;
+                s.vS = (Math.random() - 0.5) * 0.2;//scale
+                s.vA = -Math.random() * 0.05 - 0.01;//alpha
+                stage.addChild(s);
+
+
+
+            }
+        }
+    }
+</script>
+</body>
+</html>

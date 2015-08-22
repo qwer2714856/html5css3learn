@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .text-shadow{
+            /*x y 模糊程度 颜色*/
+            text-shadow: -1px -1px 1px #000,
+            5px 5px 1px #000,
+            10px 10px 1px #000;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+  <h2>text-shadow</h2>
+ <p class="text-shadow">aaa</p>
+
+
+<h2>使用服务器端字体</h2>
+<p>word-break: normal|break-all|keep-all;
+    normal	使用浏览器默认的换行规则。
+    break-all	允许在单词内换行。
+    keep-all	只能在半角空格或连字符处换行。</p>
+  <style>
+      @font-face {
+          font-family: '';
+          src: local("Arial"),/*如果本地没有这个字体就使用服务器端的字体*/
+                url('');
+      }
+
+  </style>
+<!--font-size-adjust 保持不同字体的相同字号看起来差距不大 计算方式 文字高度/文字大小-->
+  <style>
+      .fz-adjust{
+          font-size: 18px;
+          /*font-size-adjust: 文字高度/文字大小;*/
+          font-size-adjust: 0.55;
+      }
+  </style>
+  <div class="fz-adjust">aaaa</div>
+</body>
+</html>

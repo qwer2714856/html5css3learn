@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h1>路径</h1>
+<ul>
+    <li>绘制图形</li>
+    <li>Move To Line To</li>
+    <li>bezierCurveTo</li>
+</ul>
+<canvas id="canvas" width="500" height="500"></canvas>
+<script>
+    var canvas = document.getElementById("canvas");
+    if(canvas){
+        var c = canvas.getContext("2d");
+        c.fillStyle = "#000";
+        c.fillRect(0,0,500,500);
+        for(var i = 10; i >= 0; i--){
+            c.beginPath();
+            c.arc(i*15,i*15,i*5,0,Math.PI * 2,true);
+            c.closePath();
+            c.fillStyle = "#ccc";
+            c.fill();
+        }
+    }
+</script>
+
+<h2>moveto line to </h2>
+<canvas id="canvas1" width="500" height="500" style="background:#000"></canvas>
+<script>
+    var canvas1 = document.getElementById("canvas1"),
+         c = canvas1.getContext("2d");
+    c.fillStyle = "#000";
+    c.fillRect(0,0,500,500);
+
+    var dx = 150,
+        dy = 150,
+        s = 100;
+
+    c.beginPath();
+    c.fillStyle = "red";
+    c.strokeStyle = "yellow";
+    var x = Math.sin(0),
+        y = Math.cos(0);
+    var dig = Math.PI / 15 * 11;
+    for(var i = 0; i <= 30; i++){
+        var x = Math.sin(i*dig),
+            y = Math.cos(i*dig);
+        c.lineTo(dx+x*s,dy+s*y);
+    }
+    c.closePath();
+    c.fill();
+    c.stroke();
+</script>
+
+<h2>bezierCurveTo(cp1x,cp1y,cp2x,cp2y,x,y)控制点注意</h2>
+<canvas id="canvas3" width="500" height="500"></canvas>
+<script>
+    var canvas3 = document.getElementById("canvas3"),
+            c = canvas3.getContext("2d");
+    c.fillStyle = "#000";
+    c.fillRect(0,0,500,500);
+
+    var dx = 150,
+            dy = 150,
+            s = 100;
+
+    c.beginPath();
+    c.fillStyle = "red";
+    c.strokeStyle = "yellow";
+    var x = Math.sin(0),
+            y = Math.cos(0);
+    var dig = Math.PI / 15 * 11;
+    for(var i = 0; i <= 30; i++){
+        var x = Math.sin(i*dig),
+                y = Math.cos(i*dig);
+        c.bezierCurveTo(dx+x*s,dy+s*y-100,dx+x*s+100,dy+s*y,dx+x*s,dy+s*y);
+    }
+    c.closePath();
+    c.fill();
+    c.stroke();
+</script>
+</body>
+</html>

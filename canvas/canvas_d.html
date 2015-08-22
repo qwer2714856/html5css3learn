@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<ul>
+    <li>线性渐变</li>
+    <li>径向渐变</li>
+    <li>变形图形</li>
+</ul>
+<h2>线性渐变</h2>
+<!--
+    createLinearGradient(xstart,ystart,xend,yend)
+    addColorStop (offset,color)//起始点
+    addColorStop (offset,color)//终结点
+    -->
+<canvas id="canvas" width="500" height="500"></canvas>
+<script>
+    var canvas = document.getElementById("canvas"),
+         c = canvas.getContext("2d");
+    var g1 = c.createLinearGradient(0,0,0,500);
+    g1.addColorStop(0,"#ccc");
+    g1.addColorStop(1,"red");
+    var g2 = c.createLinearGradient(0,0,500,0);
+    g2.addColorStop(0,"#ccc");
+    g2.addColorStop(1,"red");
+
+    c.fillStyle = g2;
+    c.fillRect(0,0,500,500);
+
+    for(var i = 0; i < 10; i++){
+        c.beginPath();
+        c.fillStyle = g1;
+        c.arc(i*20,i*20,i*5,0,Math.PI * 2,true);
+        c.closePath();
+        c.fill();
+    }
+
+</script>
+<h2>径向渐变</h2>
+<canvas id="canvas2" width="500" height="500"></canvas>
+<script>
+    var canvas2 = document.getElementById("canvas2");
+        c = canvas2.getContext("2d");
+
+    var g1 = c.createLinearGradient(0,0,0,500);
+    g1.addColorStop(0,"#ccc");
+    g1.addColorStop(1,"red");
+
+    var g2 = c.createRadialGradient(200,230,0,200,230,200);
+    g2.addColorStop(0.1,"#ccc");
+    g2.addColorStop(0.5,"red");
+    g2.addColorStop(1,"yellow");
+
+
+    c.fillStyle = g2;
+    c.fillRect(0,0,500,500);
+
+</script>
+
+
+<h2>变形图形</h2>
+<canvas id="canvas3" width="500" height="500" style="background:#000"></canvas>
+<script>
+    var canvas3 = document.getElementById("canvas3");
+    c = canvas3.getContext("2d");
+//translate 平移
+//scale     缩放
+//rotate    旋转
+
+    c.fillStyle="#ccc";
+    for(var i = 0; i < 50; i++) {
+        //这里注意这三个属性都是在原有基础上进行的操作
+        c.translate(100, 25);
+        c.scale(0.95, 0.95);
+        c.rotate(Math.PI / 10);
+        c.fillRect(0, 0, 50, 50);
+    }
+
+</script>
+
+</body>
+</html>

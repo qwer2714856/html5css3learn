@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h1>indexedDB</h1>
+<ul>
+    <li>indexedDB概念</li>
+    <li>连接数据库</li>
+    <li>数据库的版本更新</li>
+    <li>创建对象仓库</li>
+</ul>
+<h2>indexedDB概念</h2>
+<p>no sql 数据库</p>
+<input type="button" value="createDatabase" onclick="createDatabase()"/>
+<input type="button" value="databaseupdate" onclick="databaseUpdate()"/>
+<input type="button" value="createStorage" onclick="createStorage()"/>
+<input type="button" value="createIndex" onclick="createIndex()"/>
+<script>
+    window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+    window.IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction;
+    window.IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange;
+    window.IDBCursor = window.IDBCursor || window.webkitIDBCursor || window.msIDBCursor;
+    function createDatabase(){
+        var dbName = 'indexedDB',
+             version = "1",
+             idb = null,
+             dbConnect = null;
+        /*
+        * @dbName 数据库名称
+        * @version 数据库版本
+        * @return 句柄
+        * 没有创建有就返回连接据句柄
+         */
+        dbConnect = indexedDB.open(dbName, version);
+        dbConnect.onsuccess = function(e){
+            idb = e.target.result;
+            alert('connect ok');
+        }
+        dbConnect.onerror = function(){
+            alert('connect error');
+        }
+
+    }
+
+    //indexedDB数据仓库不允许在同一个数据库版本上操作。
+    function databaseUpdate() {
+        var dbName = 'indexedDB',
+                version = "4",
+                idb = null,
+                dbConnect = null;
+        dbConnect = indexedDB.open(dbName, version);//修改数据库版本,同命不同版本
+        dbConnect.onsuccess = function (e) {
+            idb = e.target.result;
+        }
+        dbConnect.onerror = function () {
+            alert('error');
+        }
+        dbConnect.onupgradeneeded = function(e){//当数据库版本发生改变的时候才调用
+            var idb = e.target.result;
+            var tx = e.target.transaction;//事务
+            var oldVersion = e.oldVersion;
+            var newVersion = e.newVersion;
+            alert('old='+oldVersion+'new='+newVersion);
+        }
+    }
+
+    //每次创建数据仓库的时候一定注意版本和数据表名称一定要唯一和上一版本不同，也就说每次要修改版本才能进入upgradeneeded.
+    function createStorage(){
+        var dbName = 'indexedDB',
+             version = "30",
+             idb = null,
+             dbConnect = null;
+        dbConnect = indexedDB.open(dbName, version);
+        dbConnect.onsuccess = function(e){
+            idb = e.target.result;
+        }
+        dbConnect.onerror = function(){
+            alert('error');
+        }
+        dbConnect.onupgradeneeded = function(e){
+            var idb = e.target.result;
+            var dc = {
+                keyPath : 'userid',
+                autoIncrement:false
+            }
+
+            var store = idb.createObjectStore('storeNameed',dc);
+            alert(store);
+
+        }
+    }
+
+
+
+
+
+
+
+    var storeName = "storeNames12",
+         v = 90,
+         idb = null;
+    function createIndex(){
+        var dbName = 'indexedDB',
+             version = v,
+             idb = null,
+             dbConnect = null;
+        dbConnect = indexedDB.open(dbName, version);
+        dbConnect.onsuccess = function(e){
+
+        }
+        dbConnect.onerror = function(){
+
+        }
+        dbConnect.onupgradeneeded = function(e){
+
+            idb = e.target.result;
+            if(!idb.objectStoreNames.contains(storeName)){
+
+                var store = idb.createObjectStore(storeName,{
+                    keyPath : 'id'
+                });
+                /**
+                 * createindex 索引名称,表中的索引名称、索引字段名，索引属性是否唯一
+                 *
+                 */
+                store.createIndex('nameIndex','name',{unique:true});
+                store.createIndex('ageIndex','age',{unique:false});
+                setTimeout(function(){
+                    addData(idb, storeName);
+                },1000)
+                alert('ok');
+            }
+        }
+    }
+
+
+
+    var students = [{
+        id : 101,
+        name : 'aaa1',
+        age : 101
+    },{
+        id : 102,
+        name : 'aaa2',
+        age : 102
+    },{
+        id : 103,
+        name : 'aaa3',
+        age : 103
+    },{
+        id : 104,
+        name : 'aaa4',
+        age : 104
+    }];
+
+    function addData(db, storeName){
+
+        var transaction = db.transaction(storeName,"readwrite");
+        var store = transaction.objectStore(storeName);
+
+        for(var i = 0; i < students.length; i++){
+
+            store.add(students[i]);
+        }
+    }
+
+function getDataByIndexName(){
+   /* var db = indexedDB.open('indexedDB', v);
+    db.onsuccess = function() {
+        alert('');
+
+    }*/
+
+
+    var dbName = 'indexedDB',
+            version = 104,
+            idb = null,
+            dbConnect = null;
+    dbConnect = indexedDB.open(dbName, version);
+    dbConnect.onsuccess = function(e){
+        var db = e.target.result;
+        var transaction = db.transaction(storeName, "readwrite"),
+                store = transaction.objectStore(storeName);
+        var index = store.index("nameIndex");
+        index.get("aaa1").onsuccess = function (e) {
+            var s = e.target.result;
+            console.log(s.name + '--' + s.age);
+        }
+    }
+
+}
+   /* setTimeout(function(){
+    getDataByIndexName();
+    },1000);*/
+
+
+
+    //游标的使用
+    /*function getDataByCursor(){
+        var dbName = 'indexedDB',
+                version = 104,
+                idb = null,
+                dbConnect = null;
+        dbConnect = indexedDB.open(dbName, version);
+        dbConnect.onsuccess = function(e) {
+            var db = e.target.result,
+                 transaction = db.transaction(storeName,"readwrite"),
+                 store = transaction.objectStore(storeName);
+
+            var request = store.openCursor();
+            request.onsuccess = function(e){
+                var c = e.target.result;
+                if(c){
+                    alert(c.key);
+                    var v = c.value;
+                    console.log(v.name);
+                    c.continue();
+                }
+            }
+
+
+        }
+    }
+setTimeout(function(){
+    getDataByCursor();
+
+},1000)*/
+
+    //使用游标和index配合
+function getDataByIndex(){
+    var dbName = 'indexedDB',
+            version = 104,
+            idb = null,
+            dbConnect = null;
+    dbConnect = indexedDB.open(dbName, version);
+    dbConnect.onsuccess = function(e) {
+        var db = e.target.result,
+            transaction = db.transaction(storeName,"readwrite"),
+            store = transaction.objectStore(storeName),
+            index = store.index("ageIndex"),
+                /**
+                 * openCursor 范围
+                 * IDBKeyRange.only(104)选择ageIndex值是104的
+                 * IDBKeyRange.lowerBound(value,isopen) 最小值是value 是否排除value本身 false不包含true包含
+                 * IDBKeyRange.upperBound(value,isopen) 最大值value是否排除value本身false不包含true包含
+                 * IDBKeyRange.bound(value1,value2,isopen1,isopen2)value1-value2这个区间的
+                 * 如果index是字符串将是首字母是否包含
+                 */
+            cursor = index.openCursor(IDBKeyRange.only(104));
+        cursor.onsuccess = function(e){
+            var c = e.target.result;
+
+            if(c) {
+                var v = c.value;
+                console.log(v.name);
+                c.continue();
+            }
+        }
+
+    }
+}
+
+    setTimeout(function(){
+        getDataByIndex();
+
+    },1000)
+</script>
+</body>
+</html>

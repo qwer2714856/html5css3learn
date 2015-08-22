@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>form</title>
+</head>
+<body>
+    <h1>form属性</h1>
+    <ul>
+        <li>表单内元素的form属性</li>
+        <li>表单内元素的formaction属性</li>
+        <li>表单内元素的formmethod属性</li>
+        <li>表单内元素的formenctype属性</li>
+        <li>表单内元素的formtarget属性</li>
+        <li>表单内元素的autofocus属性</li>
+        <li>表单内元素的required属性</li>
+        <li>表单内元素的labels属性 js属性</li>
+    </ul>
+
+
+    <h2>form</h2>
+    <p>表单内的元素可以放到表单外边通过form关联表单id</p>
+    <form action="form_php.php" id="form1" method="post">
+        <input type="submit" value="tj"/>
+    </form>
+    <input type="text" value="1" form="form1" name="data"/><!--表单内的元素可以放到表单外边通过form关联表单id-->
+
+    <h2>form action</h2>
+    <form id="form2" method="post">
+        <input type="text" value="data2"  name="data2"/>
+        <input type="submit" value="tj" formaction="form_php.php"/><!--可以有多个submit指定不同的formaction提交到不同的页面-->
+    </form>
+
+    <h2>form method</h2>
+    <form id="form3">
+        <input type="text" value="data3"  name="data3"/>
+        <input type="submit" value="post" formmethod="post" formaction="form_php.php" />
+        <input type="submit" value="get" formmethod="get" formaction="form_php.php"/>
+    </form>
+    <input type="text" name="data3_txt" form="form3"/>
+
+
+
+    <h2>form enctype</h2><!--指定编码-->
+    <table class="dataintable" border="1">
+        <tbody><tr>
+            <th>值</th>
+            <th>描述</th>
+        </tr>
+        <tr>
+            <td>application/x-www-form-urlencoded</td>
+            <td>在发送前编码所有字符（默认）</td>
+        </tr>
+        <tr>
+            <td>multipart/form-data</td>
+            <td>
+                <p>不对字符编码。</p>
+                <p>在使用包含文件上传控件的表单时，必须使用该值。</p>
+            </td>
+        </tr>
+        <tr>
+            <td>text/plain</td>
+            <td>空格转换为 "+" 加号，但不对特殊字符编码。</td>
+        </tr>
+        </tbody></table>
+    <form id="form4">
+        <input type="text" value="data4"  name="data4"/>
+        <input type="submit" value="post" formmethod="post" formaction="form_php.php"  formenctype="application/x-www-form-urlencoded"/>
+        <input type="submit" value="get" formmethod="get" formaction="form_php.php" formenctype="application/x-www-form-urlencoded"/>
+    </form>
+    <input type="text" name="data4_txt" form="form4"/>
+
+
+    <h2>form target</h2><!--跳转方式-->
+    <form id="form5">
+        <input type="text" value="data5"  name="data5"/>
+        <input type="submit" value="post" formmethod="post" formaction="form_php.php"  formenctype="application/x-www-form-urlencoded" formtarget="_blank"/>
+        <input type="submit" value="get" formmethod="get" formaction="form_php.php" formenctype="application/x-www-form-urlencoded" formtarget="_self"/>
+    </form>
+    <input type="text" name="data5_txt" form="form5"/>
+
+
+    <h2>auto focus</h2>
+    <form>
+        <input type="text" autofocus="autofocus"/>   <!--启动页面自动获得焦点-->
+    </form>
+
+    <h2>required</h2><!--验证部位空空提示-->
+    <form action="#">
+        <input type="text" name="required" required="required"/>
+        <input type="submit" value="tj"/>
+    </form>
+
+    <h2>labels</h2><!---->
+    <form action="#" id="labelForm">
+        <label id="2" for="txt-label">text-label</label>
+        <label id="label" for="txt-label">text-label</label>
+        <input type="text" id="txt-label"/>
+        <input type="button" value="yz" onclick="check()"/>
+    </form>
+    <script>
+        function check() {
+            var lableForm = document.getElementById("labelForm"),
+                lable = document.getElementById("label"),
+                text = document.getElementById("txt-label");
+
+           // var l = document.createElement("label");
+            //l.setAttribute("for","txt-label");
+            //lableForm.insertBefore(l, lable);
+            alert(text.labels.length);//获取 text 有多少个label 用for指向它
+            alert(text.value.trim());
+        }
+    </script>
+</body>
+</html>

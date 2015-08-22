@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<ul>
+    <li>音频播放</li>
+    <li>编解码工具</li>
+    <li>视频播放</li>
+</ul>
+<h2>音频播放</h2>
+<ul>
+    <li>control控制器</li>
+    <li>audio定义音频</li>
+    <li>source定义多媒体资源可以是多个，mp3,和ogg不同浏览器支持情况不同。</li>
+</ul>
+<audio id="audio"  controls="controls">
+    <source src="fzs.ogg" >
+    <source src="a.mp3" >
+    不支持
+</audio>
+<input type="button" value="start" onclick="startOrStop()"/>
+<script>
+    var audio = document.getElementById("audio");
+    function startOrStop(){
+        if(audio.paused){//true 暂停 false 启动
+            audio.play();
+        }else{
+            audio.pause();
+        }
+    }
+</script>
+
+<h2>编辑码工具 chrome mp4 firefox safari ogg</h2>
+<video  controls="controls" id="ad" width="100" height="100">
+    <source src="a.mp4">
+    <source src="out.ogg">
+    不支持
+</video>
+<input type="button" id="sos" onclick="sos()" value="dj" />
+<input type="button" onclick="big()" value="放大"/>
+<input type="button" onclick="small()" value="缩小"/>
+<script>
+    var ad = document.getElementById("ad");
+    function sos(){
+        if(ad.paused){
+            ad.play();
+        }else{
+            ad.pause();
+        }
+    }
+    function big(){
+        ad.width = 500;
+        ad.height = 500;
+    }
+    function small(){
+        ad.width = 100;
+        ad.height = 100;
+    }
+</script>
+</body>
+</html>

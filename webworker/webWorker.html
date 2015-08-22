@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html manifest="MANIFEST.appcache">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>应用缓存 webWorker</title>
+    <link rel="stylesheet" href="a.css"/>
+</head>
+<body>
+<h2>应用缓存</h2>
+<p>在HTML上加入manifest</p>
+<p>manifest文件
+    <br />
+    CACHE MANIFEST 在此标题下列出的文件将在首次下载后缓存
+    <br />
+    NETWORK 在此标题下列出的文件需要与服务器的连接，而且不会被缓存
+    <br />
+    FALLBACK 假如你访问的一个文件不存在将用另一个文件代替
+</p>
+<img src="a1.jpg" alt=""/>
+<P>
+MANIFEST如果有多条缓存用换行写
+CACHE MANIFEST
+CACHE:
+A
+B
+chrome 的 resource 的application cache MANIFEST.appcache可以查看被缓存内容
+</P>
+</body>
+</html>

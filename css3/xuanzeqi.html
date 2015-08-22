@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div[id*=div]{
+            background: red;
+        }
+        div[id^=div]{
+            color: #fff;
+        }
+        div[id$=\1div]{
+            border:1px solid #000;
+        }
+       /*如果是数字就用\转定义一下*/
+
+       /*伪元素选择器*/
+       /*first-line 向第一行写样式*/
+        .map:first-line{
+            background:red;
+        }
+        /*first-letter 向第一个字母使用样式*/
+        .map:first-letter{
+            color:#fff;
+        }
+        /*before*/
+        .map:before{
+            content: "--";
+        }
+        /*after*/
+        .map:after{
+            content: "^^";
+            background: #000;
+            color: #fff;
+        }
+        /*结构伪类选择器*/
+        /*root html节点*/
+        :root{
+            background: #e2e2e2;
+        }
+        body{
+            background:#ccc;
+        }
+        /*如果使用:root和body同时使用:root会给整个页面上色body只给内容区域上色，但是如果只有body那么回给整个页面上色*/
+        /*not 排除*/
+        .jg :not(#a){
+            color: yellow;
+        }
+        /*empty*/
+       .ll *:empty{
+         border: 1px solid #000;
+       }
+        /*target 被href跳转到的地方加标注色，不是href本身*/
+        #ss:target{
+            background: red;
+        }
+
+
+        /*选择器第二部分*/
+
+    </style>
+</head>
+<body>
+<div id="div1">div1</div>
+<div id="sdiv2">div2</div>
+<div id="div">div</div>
+<div id="div4">div4</div>
+<div id="my">div5</div>
+
+
+
+
+<p class="map">aaa<br />bbb</p>
+
+
+<div class="jg">
+    <p id="a">111</p>
+    <div>ccc</div>
+    <h3>sdfsdfd</h3>
+</div>
+
+
+<table class="ll">
+    <tr>
+        <td>1</td>
+        <td></td>
+    </tr>
+</table>
+
+<a href="#ss" id="cityhouse" >cityhouse</a>
+<div id="ss">sss</div>
+
+
+
+<h2>选择器第二部分</h2>
+<ul>
+    <li>first-child</li>
+    <li>last-child</li>
+    <li>nth-child 可以写数字也可以写odd event odd基数 even偶数，从上往下</li>
+    <li>nth-last-child 同上 顺序从下往上</li>
+    <li>nth-of-type</li>
+    <li>nth-last-of-type</li>
+    <li>only-child</li>
+</ul>
+<style>
+    .tow-first-child li:first-child{
+        color: red;
+    }
+    .tow-first-child li:last-child{
+        color: yellow;
+    }
+
+
+    .tow-first-child li:nth-child(2){
+        color:#f5f5f5;
+    }
+    .tow-first-child li:nth-last-child(2){
+        color:#fff;
+    }
+    .tow-test .v:nth-child(2){
+        color: red;
+    }
+</style>
+<ul class="tow-first-child">
+    <li>aaa</li>
+    <li>aaa</li>
+    <li>aaa</li>
+    <li>aaa</li>
+    <li>bbbb</li>
+</ul>
+
+<ul class="tow-test">
+    <li>d</li>
+    <li class="v">d</li>
+    <li class="v">d</li>
+</ul>
+
+
+
+<h2>nth-of-type nth-last-of-type</h2>
+<style>
+    .tow-not .v:nth-of-type(2){
+        color: red;
+    }
+    /*这里注意里面的标签有h2 p可以将一样的标签为一组class v也可用标签名， 多组不同类标签！！可以用这个表示同类的一组，如果子元素有一样和nth-child一样*/
+    /*.tow-not .v:nth-of-type(even){
+        color: red;
+    }*/
+</style>
+<div class="tow-not">
+    <h2 class="v">111</h2>
+    <p>111</p>
+    <h2 class="v">111</h2>
+    <p>111</p>
+    <h2 class="v">111</h2>
+    <p>111</p>
+</div>
+
+<h2>nth-child(n)</h2>
+<style>
+    /*
+    * nth-child(n)
+    * αn+β
+    */
+    /*4n代表每4个一组*/
+    .three-n li:nth-child(4n+1){
+        color: red;
+    }
+    .three-n li:nth-child(4n+2){
+        color: yellow;
+    }
+    .three-n li:nth-child(4n+3){
+        color: green;
+    }
+    .three-n li:nth-child(4n){
+        color: #000;
+    }
+</style>
+<ul class="three-n">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+</ul>
+
+<h2>only-child 只有一个节点的才会有样式</h2>
+<style>
+    .three-only :only-child{
+        background:red;
+    }
+</style>
+<ul class="three-only">
+    <li>1</li>
+    <li>1</li>
+</ul>
+
+
+
+<h2>状态选择器</h2>
+<style>
+    input[type='text']:hover{
+        background:#000;
+    }
+    input[type='text']:focus{
+        background: red;
+    }
+    input[type='text']:active{
+        background: yellow;
+    }
+    input[type='checkbox']:checked{
+      outline: 1px solid #000;
+    }
+    #b:enabled{
+        background:red;
+    }
+    #b:disabled{
+        background: yellow;
+    }
+    .gc~p{/*和gc相邻的p元素*/
+        background: red;
+    }
+</style>
+<ui>
+    <li>hover</li>
+    <li>focus</li>
+    <li>active</li>
+    <li>checked</li>
+    <li>enabled</li>
+    <li>disabled</li>
+    <li>element+element	div+p	选择紧接在 <div> 元素之后的第一个 <p> 元素。</li>
+    <li>element+element	div~p	<div> 元素之后的所有 <p> 元素。</li>
+    <li></li>
+    <li></li>
+</ui>
+<input type="text"/>
+<input type="checkbox" />
+<input type="radio" id="r1" name="radio" onchange="document.getElementById('b').disabled = true;"/>
+<input type="radio" id="r2" name="radio" onchange="document.getElementById('b').disabled = false"/>
+<input type="button" disabled="disabled"  id="b"/>
+
+
+<div class="g">
+    <div class="gc">2</div>
+    <city>ss</city>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+</div>
+</body>
+</html>

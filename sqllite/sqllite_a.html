@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h1>本地数据库-概念</h1>
+<p>在HTML5中，大大丰富了客户端本地可以存储的内容，添加了很多功能将原本必须要保存在服务器上的数据转为保存在客户端本地，从而大大提高了Web应用程序性能，减轻了服务器的负担，使用Web时代重新回到了“客户端为重、服务器端为轻”的时代。</p>
+<ul>
+    <li>SQLLite   正规sql</li>
+    <li>indexedDB 键值对形式</li>
+</ul>
+<h2>SQLLite</h2>
+<p>1.创建访问数据库对象，2.使用事务处理</p>
+
+<script>
+    /**
+     * @databasename 数据库名字
+     * @version       数据库版本号
+     * @description  数据库描述
+     * @databasesize 数据库大小
+     * return db object 如果不存在就创建，存在返回对象
+     */
+    var DB = openDatabase("databaseName","1.0","description",'1024*100');
+    /**
+     * 事务处理
+     * DB.transaction
+     * callback (fx)
+     *          fx.executeSql 执行sql语句
+     */
+    /*db.transaction(function(tx){
+        tx.executeSql("")
+    });*/
+
+    //executeSql
+    /**
+     * transaction.executeSql(sql, [], dataHandler, errorHandler)
+     *                        sql 语句 查询参数数组 成功回调 失败回到
+     * dataHandler(transaction, result)
+     * errorHandler(transaction, errorMsg)
+     * rows.length 记录条数 rows[i] rows.length
+     */
+    DB.transaction(function(tx){
+        //创建表
+        tx.executeSql("CREATE TABLE IF NOT EXISTS tabs(name TEXT,message TEXT,time INTEGER)", [], function(tx, result){
+
+        }, function(tx, errorMsg){
+
+        });
+        //查询表
+        tx.executeSql("SELECT *from tabs", [], function(tx, result){
+            var rows = result.rows ,
+                ln = rows.length;
+
+            for(var i = ln - 1; i >= 0; i--){
+               console.log(rows[i].name);
+            }
+        }, function(tx, errorMsg){
+
+        });
+
+        //插入
+        tx.executeSql("INSERT INTO tabs VALUES(?,?,?)", ['ding','luchao',new Date()], function(tx, result){
+
+        }, function(tx, errorMsg){
+
+        });
+
+        //更新
+        tx.executeSql("UPDATE tabs SET name='sqy'",[],function(tx, result){
+
+        }, function(tx, errorMsg){
+
+        })
+        //删除
+        tx.executeSql("DELETE FROM tabs", [], function(tx, result){
+
+        }, function(tx, errorMsg){
+
+        });
+    });
+
+</script>
+</body>
+</html>

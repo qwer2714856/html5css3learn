@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<ul>
+    <li>header('Content-Type:text/event-stream')</li>
+    <li>
+        EventSource
+        <ul>
+            <li>onopen 打开</li>
+            <li>onmessage 接收消息</li>
+            <li>onerror 错误</li>
+        </ul>
+    </li>
+</ul>
+
+<div id="statusDiv"></div>
+<div id="serverData"></div>
+<script>
+
+        var statusDiv = document.getElementById("statusDiv"),
+                serverData = document.getElementById("serverData");
+
+        var server_url = "eventsource.php",
+                eventSourceObj = new EventSource(server_url);
+        statusDiv.innerHTML = "server open";
+        eventSourceObj.onopen = function (e) {
+            statusDiv.innerHTML = "server open...";
+        }
+        eventSourceObj.onmessage = function (e) {
+            serverData.innerHTML = e.data;
+        }
+        eventSourceObj.onerror = function (e) {
+            statusDiv.innerHTML = "server error";
+        }
+        eventSourceObj.addEventListener("newData",function(e){//服务器也要叫newData
+            serverData.innerHTML = e.data;//这个onmessage二选一同时用没效果 都一样
+        });
+
+</script>
+</body>
+</html>

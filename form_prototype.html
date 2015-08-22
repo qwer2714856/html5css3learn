@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h1>表单的属性</h1>
+<ul>
+    <li>标签control</li>
+    <li>文本框placeholder</li>
+    <li>文本框list</li>
+    <li>文本框AutoComplete</li>
+    <li>文本框pattern</li>
+    <li>文本框SelectionDirection</li>
+    <li>文本框indeterminate</li>
+    <li>文本框image提交按钮的width和height</li>
+</ul>
+<h2>control</h2>
+<script>
+    function setValue(){
+        var label = document.getElementById("label");
+        var textbox = label.control;
+        textbox.value="001001";
+    }
+</script>
+<form>
+    <label id="label">
+        邮编：
+        <input type="text" value="2"/>
+        <input type="tet_zip" maxlength="6"/>
+
+        <small>请输入6为数字</small>
+    </label>
+    <input type="button" onclick="setValue()" value="ck"/>
+</form>
+
+
+<h2>placeholder</h2>
+<form action="">
+    <input type="text" placeholder="模糊提示"/><!--模糊提示-->
+</form>
+
+
+
+<h2>文本框的list属性</h2>
+<form action="">
+    <input type="text" list="datalist"/>
+    <datalist id="datalist" style="display: none">
+        <option>a</option>
+        <option>b</option>
+        <option>c</option>
+    </datalist>
+</form>
+
+
+<h2>auto complete off on 不填写是on</h2>
+<form action="">
+    <input type="text" list="datalist2" autocomplete="on"/>
+    <datalist id="datalist2" style="display: none">
+        <option>administrator</option>
+        <option>body</option>
+        <option>c++++</option>
+        <option>mapreduce</option>
+    </datalist>
+</form>
+
+
+
+<h2>pattern</h2>
+
+<form action="#">
+    <input type="text" required="required" pattern="[a-z]{5}" value=""/>
+    <input type="submit" value="pattern"/>
+</form>
+
+<h2>selection direction </h2>
+<form action="">
+    <input type="text" id="c" value="选取"/>
+    <input type="button" onclick="AD()" value="获取文本框选取方向"/>
+</form>
+<script>
+    function AD() {
+        //forward 是正向选取或者不选
+        //backward 反向选取
+        alert(document.getElementById("c").selectionDirection);
+    }
+</script>
+
+
+<h2>indeterminate 用来明确checkbox 是否尚未被选取 一上来会有不明选取的样式.</h2>
+<form action="">
+    <input type="checkbox"  id="cb"/>
+    <script>
+        document.getElementById("cb").indeterminate = true;
+    </script>
+</form>
+
+<h2>image width height</h2>
+<form action="#">
+    <input type="text"/>
+    <input type="image" src="http://image4.cityhouse.cn/image/ad/up_90f6fce09.jpg" width="50" height="50"/>
+</form>
+</body>
+</html>

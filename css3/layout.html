@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>布局</title>
+</head>
+<body>
+http://caniuse.com/ 测试css兼容的玩意
+
+<h2>媒体查询</h2>
+<link rel="stylesheet" href="" media="(max-width:100px)"/>
+<style>
+    @media only screen and (max-weight: 100px) {
+
+    }
+
+
+</style>
+
+<h2>布局</h2>
+<ul>
+    <li>弹性和模型</li>
+    <li>column 布局CSS3瀑布流</li>
+</ul>
+<ul>
+    <li>老的智能机320*480</li>
+    <li>智能手机 >= 480px</li>
+    <li>平板电脑>=768</li>
+    <li>中等屏幕>=992</li>
+    <li>大屏幕>=1200</li>
+</ul>
+实现原则从小到大实现 移动优先的原则
+<style>
+    @media only screen and (min-width: 320px) {}
+    @media only screen and (min-width: 480px) {}
+    @media only screen and (min-width: 640px) {}
+    @media only screen and (min-width: 768px) {}
+    @media only screen and (min-width: 992px) {}
+    @media only screen and (min-width: 1200px){}
+
+</style>
+</body>
+</html>

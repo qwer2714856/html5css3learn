@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>文件API第二部分</title>
+</head>
+<body>
+<ul>
+    <li>fileSystem api 概述</li>
+    <li>申请磁盘配额</li>
+    <li>创建文件</li>
+</ul>
+<h2>fileSystem api 概述</h2>
+<p>存储永久数据存在硬盘上应用程序之间不互相干扰(存在沙盒中的)</p>
+<h2>filesystem API</h2>
+<script>
+    //window.requestFileSystem
+    //@param type
+    //@param size 字节单位
+    //@param success
+    //@param error
+    //FileError.NOT_FOUND_ERR:未找到文件的目录
+    //FileError.SECURITY_ERR:操作不当引起的安全性报错
+    //FileError.ABORT_ERR:当前操作被终止
+    //FileError.NOT_READABLE_ERR:制定的目录或文件不可读
+    //FileError.ENCODING_ERR:文字编码错误
+    //FileError.INVALID_STATE_ERR:指定的状态无效
+    //FileError.TYPE_MISMATCH_ERR:文件类型错误
+    //FileError.INVALID_MODIFICATION_ERR:对文件或目录所指定的操作不能被执行
+    //FileError。PATH_EXISTS_ERR:制定目录访问错误
+
+    window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
+    var fs = null;
+    var msg = '';
+    if(window.requestFileSystem){
+        initFs();
+    }
+    function initFs(){
+        window.requestFileSystem(window.TEMPORARY, 1024*10, function(fileSystem){
+            fs = fileSystem;
+            document.getElementById("result").innerHTML = 'ok';
+        },function(e){
+            switch (e.code){
+                case FileError.NOT_FOUND_ERR:msg = '未找到文件的目录';break;
+                case FileError.SECURITY_ERR :msg = '操作不当引起的安全性报错';break;
+            }
+            alert(msg);
+        })
+    }
+</script>
+<output id="result"></output>
+
+
+<h2>申请磁盘配额</h2>
+<script>
+    function sq(){
+        var val = document.getElementById("val").value;
+        //webkit core
+        //window.webkitTemporaryStorage 临时
+        //window.webkitPersistentStorage 永久
+        window.navigator.webkitPersistentStorage.requestQuota(val, function(getbytes){
+            var size = '';
+            if(getbytes < 1024 ){
+                size = 'bytes';
+            }else{
+                if(getbytes < Math.pow(1024,2)){
+                    size = 'kb';
+                    getbytes /= 1024;
+                }else{
+                    if(getbytes < Math.pow(1024,3)){
+                        size = 'mb';
+                        getbytes /= Math.pow(1024,2);
+                    }else{
+                        size = 'gb';
+                        getbytes /= Math.pow(1024,3);
+                    }
+                }
+               document.getElementById("result2").innerHTML = "申请了" + getbytes.toFixed(2) + size;
+            }
+        },function(){
+
+        });
+    }
+</script>
+<form action="">
+    <input type="text" value="10240" id="val"/>
+    <input type="button" value="申请磁盘配额" onclick="sq()"/>
+</form>
+<output id="result2"></output>
+
+
+<h2>创建文件</h2>
+<script>
+    function createFile(){
+        var fileName = document.getElementById("fileName").value,
+             size = document.getElementById("size").value;
+
+        //这个必须建立在
+        //window.navigator.webkitPersistentStorage.requestQuota申请完毕空间
+        window.requestFileSystem(window.TEMPORARY,size,function(fs){
+
+            fs.root.getFile(fileName,{
+                create:true
+            },function(e){
+                alert(e.fullPath+ e.name);
+            })
+        },function(e){
+
+        });
+
+
+
+    }
+</script>
+<form action="">
+    <input type="text" id="fileName" />
+    <input type="text" id="size" />
+    <input type="button" value="createFile" onclick="createFile()"/>
+</form>
+</body>
+</html>

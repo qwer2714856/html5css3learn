@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<ul>
+    <li>FileList对象与file对象</li>
+    <li>Blob对象</li>
+    <li>FileReader对象</li>
+</ul>
+<h2>FileList对象与file对象</h2>
+<script>
+    function upload(){
+        var file = document.getElementById("file").files;
+        for(var i = 0; i < file.length; i++){
+           console.log(file[i].name);
+        }
+
+    }
+</script>
+<form action="">
+    <input type="file" multiple id="file"/>
+    <input type="button" onclick="upload()"/>
+</form>
+
+
+<h2>Blob size（返回字节） type 未知格式返回空字符串  file 继承Blob 所以可以直接用file对象 调用size type</h2>
+<script>
+    function blob(){
+        var file = document.getElementById("file2").files;
+        for(var i = 0; i < file.length; i++){
+            console.log('name='+file[i].name +',type='+ file[i].type + ',size='+file[i].size);
+        }
+    }
+</script>
+<form action="">
+    <input type="file" multiple id="file2"/>
+    <input type="button" onclick="blob()"/>
+</form>
+
+<h2>FileReader</h2>
+<ul>
+    <li>readAsBinaryString 文件数据读取为二进制</li>
+    <li>readAsText 文件读取文本数据</li>
+    <li>readAsDataURL 返回文件的存储url</li>
+    <li>readAsArrayBuffer 返回数组对象需要结合getInt32使用</li>
+    <li>abort 中断</li>
+</ul>
+<ul>
+    <li>onabort</li>
+    <li>onerror</li>
+    <li>onload</li>
+    <li>onloadstart</li>
+    <li>onloadend</li>
+    <li>onprogress</li>
+</ul>
+
+
+<form action="">
+    <input type="file" id="file3"/>
+    <input type="button" value="读取图像" onclick="readImage()"/>
+    <input type="button" value="读取文件" onclick="readAsText()"/>
+    <input type="button" value="读取二进制" onclick="readAsBinaryString()"/>
+</form>
+<img src="" id="imgs" alt=""/>
+<div id="showContent"></div>
+<script>
+    var file = null,
+         img = document.getElementById("imgs"),
+         showContent = document.getElementById("showContent"),
+         reader = new FileReader();
+    function _file(){
+        file = document.getElementById("file3").files[0];
+    }
+    function readImage(){
+        _file();
+        reader.readAsDataURL(file);
+        reader.onload = function(e){
+            img.src= this.result;
+        }
+    }
+
+    function readAsText(){
+        _file();
+        reader.readAsText(file);
+        reader.onload = function(e){
+            showContent.innerHTML = this.result;
+        }
+    }
+
+    function readAsBinaryString(){
+        _file();
+        reader.readAsBinaryString(file);
+        reader.onload = function(e){
+            showContent.innerHTML = this.result;
+        }
+    }
+</script>
+
+
+
+</body>
+</html>

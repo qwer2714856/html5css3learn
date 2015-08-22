@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>web Save</title>
+</head>
+<body>
+<ul>
+    <li>客户端存储数据的新方法</li>
+    <li>localStorage 没有时间限制</li>
+    <li>sessionStorage session有时间，页面关闭数据清除</li>
+</ul>
+<h2>localStorage</h2>
+<input type="text" value="" id="a"/>
+<input type="button" onclick="save()" value="save"/>
+<script>
+function save(){
+    var a = document.getElementById("a");
+    window.localStorage.save = window.sessionStorage.save = a.value;
+
+   //sessionStorage.setItem("key","val")
+   //sessionStorage.getItem("key")
+  //localStorage.setItem('key','val')
+  //localStorage.getItem('key')
+  //localStorage || sessionStorage .length 获取设置的长度
+  //localStorage || sessionStorage .key(i) 获取key
+  //localStorage || ...  .clear(); 清除session||local 的数据
+  //JSON.stringify({a:1,b:2}) 对象转字符串
+  //JSON.parse(json字符串)字符串转兑现
+ //
+}
+
+</script>
+</body>
+</html>

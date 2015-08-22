@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    .canvas{
+        background: red;
+    }
+</style>
+<body>
+<ul>
+    <li>创建canvas标签</li>
+    <li>绘制图形</li>
+    <li>绘制图片</li>
+</ul>
+<div style="display: none">
+<img src="http://image4.cityhouse.cn/image/ad/up_90f6fce09.jpg" id="admin" alt=""/>
+</div>
+<canvas class="canvas" height="500" width="500" id="canvas"></canvas>
+<script>
+    window.onload = function() {
+        var canvas = document.getElementById("canvas"),
+                c = canvas.getContext("2d");
+        //c.fillStyle="#000";
+        //c.rotate(45 * Math.PI / 180);
+        //c.translate(300,0);
+        //c.scale(0.5,0.5);
+        //c.fillRect(0,0,100,100);
+        var image = document.getElementById("admin");
+
+        c.drawImage(image, 30, 10, 200, 200, 10, 10, 87, 104);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Range对象</title>
+</head>
+<body>
+<ul>
+    <li>cloneRange</li>
+    <li>cloneContents</li>
+    <li>extractContents</li>
+    <li>insertNode</li>
+    <li>compareBoundaryPoint</li>
+    <li>collapse</li>
+    <li>detach</li>
+</ul>
+<h2>cloneRange</h2>
+<script>
+    function cloneRange(){
+        var rg = document.createRange();
+        rg.selectNodeContents(document.getElementById("p"));
+        var clone = rg.cloneRange();//克隆后删除
+        alert(clone.toString());
+        clone.deleteContents();
+    }
+</script>
+<p id="p" style="border:1px solid #ccc;width: 100px;height: 50px;">aaa</p>
+<input type="button" onclick="cloneRange()" value="删除"/>
+
+
+<h2>cloneContents</h2>
+<script>
+    function cloneContents(){
+        var rangeObj = document.createRange(),
+            divObj = document.getElementById("cloneContentsDiv");
+        rangeObj.selectNode(divObj);
+        var c = rangeObj.cloneContents();
+        divObj.appendChild(c);
+    }
+</script>
+<div id="cloneContentsDiv">
+    ssss
+    <br />
+</div>
+<input type="button" value="克隆" onclick="cloneContents();"/>
+
+<h2>extractContents</h2><!--将选中元素从一个移除一移植另一个-->
+<script>
+    function move(){
+        var a = document.getElementById("a"),
+            b = document.getElementById("b"),
+            range = document.createRange();
+        //range.selectNode(a);//把整个元素都移植进去
+        range.selectNodeContents(a);//移植内容
+        //A的内容移除放到B中去
+        var extractContents = range.extractContents();
+        b.appendChild(extractContents);
+    }
+</script>
+<div id="a" style="background:#000;width:100px;height:100px;color:#fff;">A</div>
+<div id="b" style="background:#ccc;width:100px;height:100px;color:#000;">B</div>
+<input type="button" onclick="move()" value="move"/>
+
+
+
+<h2>insertNode</h2><!--在range选取的元素的前面插入节点-->
+<script>
+    function insertNode(){
+        var insertNodeObj = document.getElementById("insertNode"),
+             selection = document.getSelection(),
+             rangeObj = null;
+        if(selection.rangeCount > 0){
+            rangeObj = selection.getRangeAt(0);
+            rangeObj.insertNode(document.getElementById("test"));
+        }
+    }
+</script>
+<div id="insertNode" onmouseup="insertNode()">11111111111111111111</div>
+<span style="background:red" id="test">test</span>
+
+<h2>compareBoundaryPoints</h2><!--比较两个Range对象位置-->
+<script>
+    function compareBoundaryPoints(){
+        var bj = document.getElementById("point"),
+            rangeObj = document.createRange();
+        rangeObj.selectNodeContents(bj);
+        var rg = document.getSelection();
+        if(rg.rangeCount > 0){
+            rg = rg.getRangeAt(0);
+            if(rg.compareBoundaryPoints(Range.START_TO_END, rangeObj) <= 0){
+                alert("选取的文字在粗体前面");
+            }else{
+                if(rg.compareBoundaryPoints(Range.END_TO_START,rangeObj) >= 0) {
+                    alert("后面");
+                }
+            }
+        }
+
+    }
+</script>
+aaaaaaaaaaem<em id="point">位置</em>aaaaaaaaaaa<br />
+<input type="button" value="比较" onclick="compareBoundaryPoints()"/>
+
+<h2>collapse</h2>
+<script>
+    var rg = document.createRange();
+
+    function s(){
+        rg.selectNode(document.getElementById("collapse"))
+    }
+    function c(){
+        rg.collapse(false);//true false 都一样chrome测试时这样 firefox 不是true是选中false不选中所以只用false
+    }
+    function sw(){
+        rg.detach();//detach释放有问题直接用null
+        alert(rg.toString());
+    }
+
+
+</script>
+<div id="collapse" style="width:100px;height:100px;background:red">222</div>
+<input type="button" value="选择" onclick="s()"/>
+<input type="button" value="取消" onclick="c()"/>
+<input type="button" value="显示Range内容" onclick="sw()"/>
+
+<h2></h2>
+</body>
+</html>

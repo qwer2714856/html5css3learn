@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h1>html5 增强的页面元素</h1>
+<ul>
+    <li>figure figcaption</li>
+    <li>details summary</li>
+    <li>mark</li>
+    <li>progress</li>
+    <li>meter</li>
+    <li>ol</li>
+    <li>dl</li>
+    <li>city small</li>
+</ul>
+<h2>figure figcaption</h2><!--独立的将其移除不会影响网页-->
+<figure>
+    <figurecation>
+        hi
+    </figurecation>
+</figure>
+
+<h2>detail summary</h2>
+<script>
+    function showHide(){
+        var detail = document.getElementById("detail"),
+            da = document.getElementById("da");
+        if(detail.open){
+            da.style.display = "none";
+        }else{
+            da.style.display = "block";
+        }
+    }
+</script>
+<details id="detail" onclick="showHide()">
+<summary>aaa</summary>
+<p style="display: none" id="da">aaaaaaaaaaaaaaaaaaa</p>
+</details>
+
+
+<h2>mark</h2><!--突出高亮显示-->
+<p>ssssss <mark>高亮</mark> sss</p>
+
+<script>
+    var i = 0;
+    function bt(){
+        var ag = arguments.callee;
+        if(++i <= 100){
+            setTimeout(function(){
+                updateProgress(i);
+                ag();
+            },100);
+        }
+
+    }
+    function updateProgress(newData){
+
+         var progress = document.getElementById("progress");
+        progress.value = newData;
+        progress.getElementsByTagName("span")[0].textContent = newData;
+
+    }
+</script>
+<h2>progress</h2>
+<p><progress id="progress" max="100" value="0" style="background:#000"><span>0</span>%</progress></p>
+<input type="button" value="dj" onclick="bt()"/>
+
+
+<h2>meter</h2>
+<meter value="40" min="0" max="100" low="10" high="90" optimum="80"></meter>
+
+
+<h2>ol</h2>
+<ol start="5" reversed="reversed"><!--start 从几开始 reversed倒序状态-->
+    <li>a</li>
+    <li>b</li>
+    <li>c</li>
+    <li>d</li>
+    <li>e</li>
+</ol>
+<h2>dl</h2>
+<dl>
+    <dt></dt>
+    <dd></dd>
+    <dd></dd>
+</dl>
+
+<h2>cite</h2>
+<p>aaaa<cite>aa</cite></p><!--标签定义作品（比如书籍、歌曲、电影、电视节目、绘画、雕塑等等）的标题。-->
+
+
+<h2>small</h2><!--法律文字额外信息不允许放在主体内容-->
+
+
+
+<script>
+    for(var i=0;i<10;i++){
+        (function(i){
+            setTimeout(function(){
+                   console.log(i);
+            },1000)
+        })(i)
+    }
+</script>
+</body>
+</html>

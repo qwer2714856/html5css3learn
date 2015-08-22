@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<style>
+    div{
+        background:red;
+        border: 16px dotted #000;
+        padding:30px;
+        color: #fff;
+        margin-bottom:30px;
+    }
+    .div1{
+        background-clip: border-box;
+    background-image: url(../a.jpg);
+        background-origin: content-box;/*属性值和clip一样*/
+        background-repeat: no-repeat;
+    }
+    .div2{
+        background-clip: content-box;
+    }
+    .div3{
+        background-clip:padding-box;
+    }
+</style>
+<div class="div1">1</div>
+<div class="div2">2</div>
+<div class="div3">3</div>
+
+
+<h2>显示多个背景图片</h2>
+<style>
+    .p{
+        background-image: url("../a.jpg"),url("http://image4.cityhouse.cn/article/image/photo_8969_三元桥_副本.jpg");/*最先设置的置顶显示*/
+        background-repeat:no-repeat,repeat-x;
+        background-position: 100%,100%,center,center;
+        height: 200px;
+    }
+</style>
+<p class="p"></p>
+
+
+<h2>使用图片边框</h2>
+<style>
+    .border-image{
+        /*九宫格布局方式*/
+        /*a b c d对应下面四个值*/
+        /*ac 决定要拉伸高度 bd决定要拉伸宽度 a一下c以上 b往左d往右*/
+        border-image: url(../a.jpg) 50 50 50 60;
+        height:200px;;
+    }
+</style>
+<p class="border-image"></p>
+</body>
+</html>

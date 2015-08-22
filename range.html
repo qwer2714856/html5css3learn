@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h1>range对象</h1>
+<ul>
+    <li>c = document.getSelection() c.rangeCount条数 取内容c.getRangeAt(i)</li>
+    <li>selectNode</li>
+    <li>selectNodeContents</li>
+    <li>deleteContents</li>
+    <li>setStart</li>
+    <li>setEnd</li>
+    <li>setStartBefore</li>
+    <li>setStartAfter</li>
+    <li>setEndBefore</li>
+    <li>setEndAfter</li>
+</ul>
+<h2>selectNode</h2>
+testtesttesttesttesttesttesttesttesttest
+<script>
+    function selection(){
+        var showcontent = document.getElementById("showcontent"),
+            selection = document.getSelection(),
+            html = "";
+        if(selection.rangeCount > 0){//火狐可以选多个
+            html = "您选取了" + selection.rangeCount + '段内容<br />';
+            for(var i = 0; i < selection.rangeCount; i++){
+                html += (i+1) + "内容:" + selection.getRangeAt(i) + '<br />';
+            }
+            showcontent.innerHTML = html;
+        }
+    }
+</script>
+<input type="button" onclick="selection()"/>
+<div id="showcontent"></div>
+
+<h2>selectNode</h2>
+<script>
+    function deletes(opt){
+        var div = document.getElementById("div"),
+            rangeObj = document.createRange();
+        if(opt){
+            rangeObj.selectNode(div);
+        }else{
+            rangeObj.selectNodeContents(div);
+        }
+        rangeObj.deleteContents();
+    }
+</script>
+<div id="div" style="background:#000;width:300px;height:50px;border:1px solid red;color:#fff;">11111111111111111111111</div>
+<input type="button" onclick="deletes(true)" value="删除节点"/>
+<input type="button" onclick="deletes(false)" value="删除内容"/>
+
+
+<h2>setStart...</h2>
+<script>
+    function deleteChar(){
+        var myDiv = document.getElementById("myDiv"),
+            //textNode = myDiv,
+            textNode = myDiv.firstChild,
+            rangeObj = document.createRange();
+
+        //这里可以是文本节点也可以是元素节点，元素节点代表几个子元素，文本节点可以是几个字，注意setStart从0开始setEnd是选中几个
+        rangeObj.setStart(textNode, 0);//从第0个开始
+        rangeObj.setEnd(textNode,2);//几个结束
+        rangeObj.deleteContents();
+    }
+</script>
+<div id="myDiv" style="background:#000;width:300px;height:50px;border:1px solid #ff452c;color:#fff;">123465555555555555<p>222</p></div>
+<input type="button" onclick="deleteChar()" value="删除文字"/>
+<script>
+    function delTableLine(){
+        var myTable = document.getElementById("myTable"),
+             rangeObj = document.createRange();
+        if(myTable.rows.length > 0){
+            var row = myTable.rows[0];
+            rangeObj.setStartBefore(row);
+            rangeObj.setEndAfter(row);
+            rangeObj.deleteContents();
+        }
+    }
+</script>
+<table style="border:1px solid #000" id="myTable">
+    <tr>
+        <td>1</td>
+        <td>2</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>4</td>
+    </tr>
+</table>
+<input type="button" onclick="delTableLine()" value="删除第一行"/>
+</body>
+</html>

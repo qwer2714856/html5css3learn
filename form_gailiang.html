@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h1>改良的input元素</h1>
+<ul>
+    <li>url</li>
+    <li>email</li>
+    <li>date</li>
+    <li>time</li>
+    <li>datetime</li>
+    <li>datetime-local</li>
+    <li>month</li>
+    <li>week</li>
+    <li>number</li>
+    <li>range</li>
+    <li>search</li>
+    <li>Tel</li>
+    <li>color</li>
+</ul>
+<h2>url</h2>
+
+<form action="#">
+    <input type="url" value=""/><!--如果输入的不是网址就弹出错误了-->
+    <input type="submit" value="tj"/>
+</form>
+
+<h2>email</h2>
+<form action="#">
+    <input type="email" value=""/><!--如果输入的不是email就弹出错误了-->
+    <input type="submit" value="tj"/>
+</form>
+
+<h2>date</h2>
+<input type="date" value="2015-01-02"/>
+
+<h2>time</h2>
+<input type="time" value="23:08"/>
+
+
+<h2>datetime 没发现和普通文本框区别</h2>
+<input type="datetime" />
+
+<h2>datetime-local</h2>
+<input type="datetime-local"/>
+
+
+<h2>month</h2>
+<input type="month" />
+
+<h2>week</h2>
+<input type="week"/>
+
+<h2>number 如果输入不是数字就是空白提交  min 最小值，max最大值，step步长</h2>
+<input type="number" min="-100" max="100" step="0.1"/>
+
+
+<h2>input里面值相加的时候会是以字符串的形式拼接在一起，所以可以用dom.valueAsNumber感觉还是+v转一下好</h2>
+
+
+<h2>range</h2>
+<input type="range" max="10" min="0" value="2" step="1"/>
+
+
+<h2>search</h2>
+<input type="search" value="2"/>
+
+<h2>tel</h2>
+<input type="tel" value="2"/>
+
+<h2>color</h2>
+<input type="color"/>
+
+<h2>output</h2>
+<input type="range" id="range" max="100" min="0" value="0" step="0.1" onchange="ot()"/>
+<input type="output" id="ot" value="0"/>
+<script>
+    function ot(){
+        var rg = document.getElementById('range'),
+            ot = document.getElementById('ot');
+        ot.value = rg.value;
+    }
+</script>
+
+
+<h2>表单验证</h2>
+<form action="#" onsubmit="check()" novalidate="true"><!--取消默认的表单验证-->
+    <input type="email" id="email"/>
+    <input type="submit"/>
+</form>
+<script>
+    function check(){
+        var email = document.getElementById("email"),
+             msg = ''
+        if(email.value == ""){
+            msg = "required";
+        }else{
+            if(!email.checkValidity()){
+                msg = '请输入正确';
+            }
+        }
+        if(!msg){
+            return true;
+        }else{
+            alert(msg);
+            return false;
+        }
+    }
+</script>
+</body>
+</html>
