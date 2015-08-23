@@ -244,10 +244,9 @@ function getDataByIndex(){
                 /**
                  * openCursor 范围
                  * IDBKeyRange.only(104)选择ageIndex值是104的
-                 * IDBKeyRange.lowerBound(value,isopen) 最小值是value 是否排除value本身 false不包含true包含
-                 * IDBKeyRange.upperBound(value,isopen) 最大值value是否排除value本身false不包含true包含
+                 * IDBKeyRange.lowerBound(value,isopen) 最小值是value 是否排除value本身 false包含true不包含
+                 * IDBKeyRange.upperBound(value,isopen) 最大值value是否排除value本身false包含true不包含
                  * IDBKeyRange.bound(value1,value2,isopen1,isopen2)value1-value2这个区间的
-                 * 如果index是字符串将是首字母是否包含
                  */
             cursor = index.openCursor(IDBKeyRange.only(104));
         cursor.onsuccess = function(e){
